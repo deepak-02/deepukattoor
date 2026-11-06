@@ -8,7 +8,8 @@ Facebook / YouTube links and videos live in assets/js/config.js.
 import json, os, html
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE_URL = "https://YOUR-DOMAIN"          # e.g. https://deepukattoor.in  (no trailing slash)
+SITE_URL = "https://deepukattoor.vercel.app"
+GOOGLE_SITE_VERIFICATION = "9L6oXmYeIFKNQ1r7pbo29DP8zrMGFbWn4EtM0cEXoVY"
 FACEBOOK_URL = "https://www.facebook.com/share/19eUXActYM/"
 YOUTUBE_URL = "https://www.youtube.com/@deepukattoor6805"
 EMAIL = "deepukattoor75@gmail.com"
@@ -394,6 +395,7 @@ def page(lang):
 <meta name="description" content="{e(t["desc"])}">
 <meta name="author" content="Deepu Kattoor">
 <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}">
 <link rel="canonical" href="{url}">
 <link rel="alternate" hreflang="ml" href="{SITE_URL}/">
 <link rel="alternate" hreflang="en" href="{SITE_URL}/en/">

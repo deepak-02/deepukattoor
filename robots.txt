@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /_build/
 
-Sitemap: https://YOUR-DOMAIN/sitemap.xml
+Sitemap: https://deepukattoor.vercel.app/sitemap.xml
