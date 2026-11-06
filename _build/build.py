@@ -15,7 +15,7 @@ EMAIL = "deepukattoor75@gmail.com"
 PHONE = "+919497259252"
 PHONE_DISPLAY = "+91 94972 59252"
 WHATSAPP = "https://wa.me/919497259252"
-VERSION = "5"
+VERSION = "6"
 
 # Where to buy — keyed by publication year of the book
 SHOPS = {
@@ -399,7 +399,7 @@ def page(lang):
 <link rel="alternate" hreflang="en" href="{SITE_URL}/en/">
 <link rel="alternate" hreflang="x-default" href="{SITE_URL}/">
 <meta name="theme-color" content="#f3f6fb">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="{e(t["name"])}">
 <meta property="og:title" content="{e(t["title"])}">

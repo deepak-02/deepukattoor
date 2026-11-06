@@ -48,32 +48,6 @@
 
 :root[lang="en"] { --font-display: "Newsreader", "Noto Serif Malayalam", Georgia, serif; }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    /* Dark — true black with the blue accent */
-    --bg: #050506;
-    --bg-deep: #000000;
-    --card: #111114;
-    --raised: #1b1b20;
-    --text: #f3f4f6;
-    --text-2: #b3b7bf;
-    --text-3: #8c919b;
-    --line: rgba(255, 255, 255, 0.09);
-    --line-strong: rgba(255, 255, 255, 0.18);
-    --accent: #5ab0ff;
-    --accent-ink: #84c4ff;
-    --accent-soft: rgba(90, 176, 255, 0.13);
-    --sky: #7cc4ff;
-    --sky-soft: rgba(124, 196, 255, 0.16);
-    --on-accent: #03101f;
-    --shadow-sm: none;
-    --shadow-lg: 0 28px 70px -28px rgba(0, 6, 20, 0.85);
-    --hero-glow: radial-gradient(55% 65% at 85% 15%, rgba(90, 176, 255, 0.13), transparent 70%),
-                 radial-gradient(45% 55% at 5% 95%, rgba(64, 120, 255, 0.06), transparent 70%);
-    --page-glow: none;
-    color-scheme: dark;
-  }
-}
 :root[data-theme="dark"] {
   /* Dark — true black with the blue accent */
   --bg: #050506;
@@ -195,10 +169,6 @@ ul, ol, dl { margin: 0; padding: 0; }
 .theme-btn .i-moon { display: none; }
 :root[data-theme="dark"] .theme-btn .i-sun { display: none; }
 :root[data-theme="dark"] .theme-btn .i-moon { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-btn .i-sun { display: none; }
-  :root:not([data-theme="light"]) .theme-btn .i-moon { display: block; }
-}
 .menu-btn .i-x { display: none; }
 .menu-open .menu-btn .i-x { display: block; }
 .menu-open .menu-btn .i-menu { display: none; }
@@ -606,8 +576,6 @@ div.channel--wide { align-items: flex-start; }
 .band__row span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--sky); flex: none; }
 .band__row--alt span { color: transparent; -webkit-text-stroke: 1px var(--line-strong); }
 :root[data-theme="dark"] .band__row--alt span { -webkit-text-stroke-color: rgba(150,195,255,0.4); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .band__row--alt span { -webkit-text-stroke-color: rgba(150,195,255,0.4); } }
-
 /* Timeline fills as you scroll */
 .timeline::after { content: ""; position: absolute; left: 6px; top: 8px; width: 2px; height: calc(100% - 16px);
   background: linear-gradient(var(--accent), var(--sky)); transform-origin: top; transform: scaleY(var(--tp, 0)); border-radius: 2px; }

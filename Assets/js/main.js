@@ -31,7 +31,7 @@
   function currentTheme() {
     var t = doc.getAttribute("data-theme");
     if (t) return t;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light";
   }
   function syncThemeMeta() {
     var m = $('meta[name="theme-color"]:not([media])');
