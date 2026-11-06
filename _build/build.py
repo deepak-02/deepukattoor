@@ -15,7 +15,7 @@ EMAIL = "deepukattoor75@gmail.com"
 PHONE = "+919497259252"
 PHONE_DISPLAY = "+91 94972 59252"
 WHATSAPP = "https://wa.me/919497259252"
-VERSION = "4"
+VERSION = "5"
 
 # Where to buy — keyed by publication year of the book
 SHOPS = {
@@ -294,7 +294,7 @@ def gallery_html(t, P):
         else:
             items = GALLERY[slug]
             n0 = items[0][0]
-            cover = f'<span class="folder__cover"><img src="{P}assets/img/{slug}/thumb/{n0}" width="40" height="40" alt="" loading="lazy" decoding="async"></span>'
+            cover = f'<span class="folder__cover"><img src="{P}Assets/img/{slug}/thumb/{n0}" width="40" height="40" alt="" loading="lazy" decoding="async"></span>'
             count = f'<small class="num">{len(items)}</small>'
         sel = "true" if slug == "books" else "false"
         tabs.append(f'<button type="button" class="folder" role="tab" id="tab-{slug}" aria-controls="panel-{slug}" aria-selected="{sel}" tabindex="{0 if slug=="books" else -1}">{cover}<span>{e(label)}{count}</span></button>')
@@ -317,8 +317,8 @@ def gallery_html(t, P):
             alt = f'{t["name"]} — {cap}' if slug != "photos" else cap + f" {i+1}"
             extra = " is-extra" if i >= 6 else ""
             tiles.append(
-                f'<a class="tile{extra}" href="{P}assets/img/{slug}/{n}" data-cap="{e(cap)}">'
-                f'<img src="{P}assets/img/{slug}/thumb/{n}" width="{tw}" height="{th}" alt="{e(alt)}" loading="lazy" decoding="async"><span class="zoom">{icon("zoom")}</span></a>')
+                f'<a class="tile{extra}" href="{P}Assets/img/{slug}/{n}" data-cap="{e(cap)}">'
+                f'<img src="{P}Assets/img/{slug}/thumb/{n}" width="{tw}" height="{th}" alt="{e(alt)}" loading="lazy" decoding="async"><span class="zoom">{icon("zoom")}</span></a>')
         more = f'<button type="button" class="btn btn--ghost more">{e(t["more"])} <span class="num">({len(tiles)})</span></button>' if len(tiles) > 6 else ""
         hidden = "" if slug == "books" else " hidden"
         panels.append(f'<div class="panel" id="panel-{slug}" role="tabpanel" aria-labelledby="tab-{slug}"{hidden}><div class="grid">{"".join(tiles)}</div>{more}</div>')
@@ -335,7 +335,7 @@ def jsonld(t, lang, url):
     person = {
         "@type": "Person", "@id": SITE_URL + "/#person",
         "name": "Deepu Kattoor", "alternateName": "ദീപു കാട്ടൂർ",
-        "url": SITE_URL + "/", "image": SITE_URL + "/assets/img/portrait.webp",
+        "url": SITE_URL + "/", "image": SITE_URL + "/Assets/img/portrait.webp",
         "jobTitle": ["Writer", "Screenwriter", "Film director"],
         "description": C["en"]["desc"],
         "email": "mailto:" + EMAIL, "telephone": PHONE,
@@ -405,7 +405,7 @@ def page(lang):
 <meta property="og:title" content="{e(t["title"])}">
 <meta property="og:description" content="{e(t["desc"])}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE_URL}/assets/img/og.jpg">
+<meta property="og:image" content="{SITE_URL}/Assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{e(t["portrait_alt"])}">
@@ -416,9 +416,9 @@ def page(lang):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(t["title"])}">
 <meta name="twitter:description" content="{e(t["desc"])}">
-<meta name="twitter:image" content="{SITE_URL}/assets/img/og.jpg">
+<meta name="twitter:image" content="{SITE_URL}/Assets/img/og.jpg">
 <link rel="icon" href="{P}favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="{P}assets/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="{P}Assets/img/apple-touch-icon.png">
 <link rel="manifest" href="{P}site.webmanifest">
 <script>
 (function(){{try{{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}}catch(e){{}}document.documentElement.classList.add("js");}})();
@@ -426,8 +426,8 @@ def page(lang):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="preload" as="image" href="{P}assets/img/portrait.webp" imagesrcset="{P}assets/img/portrait-480.webp 480w, {P}assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, 90vw" fetchpriority="high">
-<link rel="stylesheet" href="{P}assets/css/style.css?v={VERSION}">
+<link rel="preload" as="image" href="{P}Assets/img/portrait.webp" imagesrcset="{P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, 90vw" fetchpriority="high">
+<link rel="stylesheet" href="{P}Assets/css/style.css?v={VERSION}">
 <script type="application/ld+json">
 {jsonld(t, lang, url)}
 </script>
@@ -438,7 +438,7 @@ def page(lang):
 
 <header class="header">
   <div class="wrap header__in">
-    <a class="brand" href="#top" aria-label="{e(t["name"])}"><span class="brand__mark" aria-hidden="true">{t["mark"]}</span><span>{e(t["name"])}</span></a>
+    <a class="brand" href="#top" aria-label="{e(t["name"])}"><span class="brand__mark" aria-hidden="true">{t["mark"]}</span><span translate="no">{e(t["name"])}</span></a>
     <nav class="nav" aria-label="{e(t["menu"])}">{nav}</nav>
     <div class="tools">
       <a class="tool lang" href="{t["lang_other_href"]}" hreflang="{t["lang_other_code"]}" lang="{t["lang_other_code"]}" aria-label="{e(t["lang_label"])}" title="{e(t["lang_label"])}"><b>{t["lang_short"]}</b></a>
@@ -454,7 +454,7 @@ def page(lang):
     <div class="wrap hero__grid">
       <div class="hero__text">
         <p class="hero__roles reveal">{roles}</p>
-        <h1 id="hero-title" class="reveal" style="--i:1" aria-label="{e(t["name"])}">{words}</h1>
+        <h1 id="hero-title" translate="no" class="reveal" style="--i:1" aria-label="{e(t["name"])}">{words}</h1>
         <div class="reveal" style="--i:2">{WAVE}</div>
         <p class="hero__lead reveal" style="--i:2">{e(t["lead"])}</p>
         <div class="hero__cta reveal" style="--i:3">
@@ -467,10 +467,10 @@ def page(lang):
         <span class="portrait__ring" aria-hidden="true"></span>
         <div class="portrait__frame">
           <span class="portrait__shine" aria-hidden="true"></span>
-          <img src="{P}assets/img/portrait.webp" srcset="{P}assets/img/portrait-480.webp 480w, {P}assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="{e(t["portrait_alt"])}" fetchpriority="high" decoding="async">
+          <img src="{P}Assets/img/portrait.webp" srcset="{P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="{e(t["portrait_alt"])}" fetchpriority="high" decoding="async">
         </div>
         <a class="latest" href="#works">
-          <img src="{P}assets/img/books/thumb/02.webp" width="56" height="72" alt="" loading="lazy" decoding="async">
+          <img src="{P}Assets/img/books/thumb/02.webp" width="56" height="72" alt="" loading="lazy" decoding="async">
           <span><small>{e(t["latest_label"])}</small><strong>{e(t["latest_title"])}</strong></span>
         </a>
        </div>
@@ -580,7 +580,7 @@ def page(lang):
   <div class="lb__strip"></div>
 </dialog>
 
-<script src="{P}assets/js/main.js?v={VERSION}" defer></script>
+<script src="{P}Assets/js/main.js?v={VERSION}" defer></script>
 </body>
 </html>
 '''
