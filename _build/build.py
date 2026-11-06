@@ -16,7 +16,7 @@ EMAIL = "deepukattoor75@gmail.com"
 PHONE = "+919497259252"
 PHONE_DISPLAY = "+91 94972 59252"
 WHATSAPP = "https://wa.me/919497259252"
-VERSION = "6"
+VERSION = "7"
 
 # Where to buy — keyed by publication year of the book
 SHOPS = {
@@ -427,7 +427,9 @@ def page(lang):
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
 <link rel="preload" as="image" href="{P}Assets/img/portrait.webp" imagesrcset="{P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, 90vw" fetchpriority="high">
 <link rel="stylesheet" href="{P}Assets/css/style.css?v={VERSION}">
 <script type="application/ld+json">
@@ -464,12 +466,12 @@ def page(lang):
           <a class="btn btn--ghost" href="#contact">{e(t["cta2"])}</a>
         </div>
       </div>
-      <figure class="portrait reveal reveal--right" style="--i:2">
+      <figure class="portrait">
        <div class="portrait__tilt">
         <span class="portrait__ring" aria-hidden="true"></span>
         <div class="portrait__frame">
           <span class="portrait__shine" aria-hidden="true"></span>
-          <img src="{P}Assets/img/portrait.webp" srcset="{P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="{e(t["portrait_alt"])}" fetchpriority="high" decoding="async">
+          <img src="{P}Assets/img/portrait.webp" srcset="{P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="{e(t["portrait_alt"])}" fetchpriority="high">
         </div>
         <a class="latest" href="#works">
           <img src="{P}Assets/img/books/thumb/02.webp" width="56" height="72" alt="" loading="lazy" decoding="async">

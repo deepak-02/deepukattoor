@@ -39,9 +39,11 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
 <link rel="preload" as="image" href="Assets/img/portrait.webp" imagesrcset="Assets/img/portrait-480.webp 480w, Assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, 90vw" fetchpriority="high">
-<link rel="stylesheet" href="Assets/css/style.css?v=6">
+<link rel="stylesheet" href="Assets/css/style.css?v=7">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -245,12 +247,12 @@
           <a class="btn btn--ghost" href="#contact">ബന്ധപ്പെടുക</a>
         </div>
       </div>
-      <figure class="portrait reveal reveal--right" style="--i:2">
+      <figure class="portrait">
        <div class="portrait__tilt">
         <span class="portrait__ring" aria-hidden="true"></span>
         <div class="portrait__frame">
           <span class="portrait__shine" aria-hidden="true"></span>
-          <img src="Assets/img/portrait.webp" srcset="Assets/img/portrait-480.webp 480w, Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="ദീപു കാട്ടൂർ — പോർട്രെയ്റ്റ്" fetchpriority="high" decoding="async">
+          <img src="Assets/img/portrait.webp" srcset="Assets/img/portrait-480.webp 480w, Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="ദീപു കാട്ടൂർ — പോർട്രെയ്റ്റ്" fetchpriority="high">
         </div>
         <a class="latest" href="#works">
           <img src="Assets/img/books/thumb/02.webp" width="56" height="72" alt="" loading="lazy" decoding="async">
@@ -368,6 +370,6 @@
   <div class="lb__strip"></div>
 </dialog>
 
-<script src="Assets/js/main.js?v=6" defer></script>
+<script src="Assets/js/main.js?v=7" defer></script>
 </body>
 </html>

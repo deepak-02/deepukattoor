@@ -9,12 +9,12 @@
   --card: #ffffff;
   --raised: #e8f1ff;
   --text: #0a1a33;
-  --text-2: #3c5272;
-  --text-3: #546b8c;
+  --text-2: #344865;
+  --text-3: #3f5677;
   --line: rgba(20, 70, 150, 0.1);
   --line-strong: rgba(20, 70, 150, 0.2);
   --accent: #1769d6;
-  --accent-ink: #1460c4;
+  --accent-ink: #1054a8;
   --accent-soft: rgba(23, 105, 214, 0.09);
   --sky: #4aa3ff;
   --sky-soft: rgba(74, 163, 255, 0.16);
@@ -150,7 +150,11 @@ ul, ol, dl { margin: 0; padding: 0; }
   background: var(--sky);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 4'%3E%3Cpath d='M0 2 Q3 0 6 2 T12 2 T18 2 T24 2' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x left center / 12px 4px;
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 4'%3E%3Cpath d='M0 2 Q3 0 6 2 T12 2 T18 2 T24 2' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x left center / 12px 4px;
-  animation: waveSlide 1.6s linear infinite;
+}
+@media (hover: hover) and (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .nav a.is-active:hover::after {
+    animation: waveSlide 1.6s linear infinite;
+  }
 }
 @keyframes waveSlide { to { -webkit-mask-position: 12px center; mask-position: 12px center; } }
 
@@ -532,6 +536,7 @@ div.channel--wide { align-items: flex-start; }
 .hero h1 .w > span { display: inline-block; transform: translateY(105%); opacity: 0; transition: transform 1000ms var(--ease), opacity 600ms var(--ease); transition-delay: calc(120ms + var(--w, 0) * 110ms); }
 .is-loaded .hero h1 .w > span { transform: none; opacity: 1; }
 .hero h1.reveal { opacity: 1; transform: none; }
+.hero .portrait, .hero .portrait.reveal { opacity: 1; transform: none; }
 
 /* Waterline draws itself */
 .js .waterline path { stroke-dasharray: 130; stroke-dashoffset: 130; transition: stroke-dashoffset 1400ms var(--ease) 200ms; }

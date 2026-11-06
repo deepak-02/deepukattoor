@@ -183,25 +183,41 @@
     var p = max > 0 ? Math.min(1, y / max) : 0;
     doc.style.setProperty("--p", p.toFixed(4));
     if (reduce) return;
+
+    // Phase 1: Batch all DOM layout reads first (prevents forced reflow)
+    var bandActive = false, bandOff = 0;
     if (band) {
       var r = band.getBoundingClientRect();
       if (r.bottom > 0 && r.top < vh) {
-        var off = (vh - r.top);
-        bandRows.forEach(function (row) {
-          var sp = parseFloat(row.getAttribute("data-speed")) || 0.2;
-          var base = sp < 0 ? 0 : -row.scrollWidth / 3;
-          row.style.transform = "translate3d(" + (base + off * sp) + "px,0,0)";
-        });
+        bandActive = true;
+        bandOff = (vh - r.top);
       }
     }
-    if (portraitImg && y < vh * 1.2) portraitImg.style.setProperty("--py", (y * 0.06).toFixed(1) + "px");
+    var tpVal = null, reachedFlags = [];
     if (timeline) {
       var tr = timeline.getBoundingClientRect();
-      var tp = Math.max(0, Math.min(1, (vh * 0.65 - tr.top) / tr.height));
-      timeline.style.setProperty("--tp", tp.toFixed(3));
-      tItems.forEach(function (li) {
-        li.classList.toggle("is-reached", li.getBoundingClientRect().top + 10 < vh * 0.65);
+      tpVal = Math.max(0, Math.min(1, (vh * 0.65 - tr.top) / tr.height)).toFixed(3);
+      for (var i = 0; i < tItems.length; i++) {
+        reachedFlags.push(tItems[i].getBoundingClientRect().top + 10 < vh * 0.65);
+      }
+    }
+
+    // Phase 2: Batch all DOM writes together
+    if (bandActive) {
+      bandRows.forEach(function (row) {
+        var sp = parseFloat(row.getAttribute("data-speed")) || 0.2;
+        var base = sp < 0 ? 0 : -row.scrollWidth / 3;
+        row.style.transform = "translate3d(" + (base + bandOff * sp) + "px,0,0)";
       });
+    }
+    if (portraitImg && y < vh * 1.2) {
+      portraitImg.style.setProperty("--py", (y * 0.06).toFixed(1) + "px");
+    }
+    if (timeline && tpVal !== null) {
+      timeline.style.setProperty("--tp", tpVal);
+      for (var j = 0; j < tItems.length; j++) {
+        tItems[j].classList.toggle("is-reached", reachedFlags[j]);
+      }
     }
   }
   function reqFx() { if (!sTick) { sTick = true; requestAnimationFrame(onScrollFx); } }
