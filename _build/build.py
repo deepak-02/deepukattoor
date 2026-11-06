@@ -72,6 +72,7 @@ C = {
   "latest_label": "പുതിയ പുസ്തകം · 2026",
   "latest_title": "പെഡഗോഗിയിൽ പ്രതിപാദിക്കാത്ത ചിലത്",
   "stats": [(4, "", "പുസ്തകങ്ങൾ"), (10, "", "ഹ്രസ്വചിത്രങ്ങൾ"), (2, "", "സംഗീത ആൽബങ്ങൾ"), (1, "", "ഒ.ടി.ടി. സിനിമ"), (15, "+", "പുരസ്കാരങ്ങൾ")],
+  "stats_label": "പ്രധാന വിവരങ്ങൾ",
   "bio_eyebrow": "ജീവചരിത്രം",
   "bio_title": "എഴുത്തും സിനിമയും",
   "intro": [
@@ -172,6 +173,7 @@ C = {
   "latest_label": "Latest book · 2026",
   "latest_title": "Pedagogiyil Prathipadikkatha Chilathu",
   "stats": [(4, "", "Books"), (10, "", "Short films"), (2, "", "Music albums"), (1, "", "OTT feature"), (15, "+", "Awards")],
+  "stats_label": "Highlights",
   "bio_eyebrow": "Biography",
   "bio_title": "Stories and cinema",
   "intro": [
@@ -295,7 +297,7 @@ def gallery_html(t, P):
         else:
             items = GALLERY[slug]
             n0 = items[0][0]
-            cover = f'<span class="folder__cover"><img src="{P}Assets/img/{slug}/thumb/{n0}" width="40" height="40" alt="" loading="lazy" decoding="async"></span>'
+            cover = f'<span class="folder__cover"><img src="{P}Assets/img/{slug}/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span>'
             count = f'<small class="num">{len(items)}</small>'
         sel = "true" if slug == "books" else "false"
         tabs.append(f'<button type="button" class="folder" role="tab" id="tab-{slug}" aria-controls="panel-{slug}" aria-selected="{sel}" tabindex="{0 if slug=="books" else -1}">{cover}<span>{e(label)}{count}</span></button>')
@@ -385,6 +387,8 @@ def page(lang):
     wa = WHATSAPP + "?text=" + quote(t["wa_text"])
     sprite = "".join(f'<symbol id="i-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in ICONS.items()) + PLAY
     other_url = SITE_URL + ("/en/" if lang == "ml" else "/")
+    css = open(os.path.join(ROOT, "Assets", "css", "style.css"), encoding="utf-8").read()
+    fonts_url = "https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@500&display=swap" if lang == "ml" else "https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
 
     return f'''<!doctype html>
 <html lang="{t["html_lang"]}" dir="ltr">
@@ -427,11 +431,13 @@ def page(lang):
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
-<link rel="preload" as="image" href="{P}Assets/img/portrait.webp" imagesrcset="{P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, 90vw" fetchpriority="high">
-<link rel="stylesheet" href="{P}Assets/css/style.css?v={VERSION}">
+<link rel="preload" as="style" href="{fonts_url}">
+<link rel="stylesheet" href="{fonts_url}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{fonts_url}"></noscript>
+<link rel="preload" as="image" href="{P}Assets/img/portrait-360.webp" imagesrcset="{P}Assets/img/portrait-360.webp 360w, {P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, (min-width: 480px) 400px, 90vw" fetchpriority="high">
+<style>
+{css}
+</style>
 <script type="application/ld+json">
 {jsonld(t, lang, url)}
 </script>
@@ -471,10 +477,10 @@ def page(lang):
         <span class="portrait__ring" aria-hidden="true"></span>
         <div class="portrait__frame">
           <span class="portrait__shine" aria-hidden="true"></span>
-          <img src="{P}Assets/img/portrait.webp" srcset="{P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="{e(t["portrait_alt"])}" fetchpriority="high">
+          <img src="{P}Assets/img/portrait-480.webp" srcset="{P}Assets/img/portrait-360.webp 360w, {P}Assets/img/portrait-480.webp 480w, {P}Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, (min-width: 480px) 400px, 90vw" width="960" height="1200" alt="{e(t["portrait_alt"])}" fetchpriority="high">
         </div>
         <a class="latest" href="#works">
-          <img src="{P}Assets/img/books/thumb/02.webp" width="56" height="72" alt="" loading="lazy" decoding="async">
+          <img src="{P}Assets/img/books/thumb/02-badge.webp" width="56" height="72" alt="" loading="lazy" decoding="async">
           <span><small>{e(t["latest_label"])}</small><strong>{e(t["latest_title"])}</strong></span>
         </a>
        </div>
@@ -482,7 +488,7 @@ def page(lang):
     </div>
   </section>
 
-  <section class="stats" aria-label="{e(t["bio_title"])}">
+  <section class="stats" aria-label="{e(t["stats_label"])}">
     <div class="wrap"><ul>{stats}</ul></div>
   </section>
 

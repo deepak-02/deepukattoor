@@ -39,11 +39,691 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
-<link rel="preload" as="image" href="Assets/img/portrait.webp" imagesrcset="Assets/img/portrait-480.webp 480w, Assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, 90vw" fetchpriority="high">
-<link rel="stylesheet" href="Assets/css/style.css?v=7">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600&family=Noto+Serif+Malayalam:wght@500&display=swap"></noscript>
+<link rel="preload" as="image" href="Assets/img/portrait-360.webp" imagesrcset="Assets/img/portrait-360.webp 360w, Assets/img/portrait-480.webp 480w, Assets/img/portrait.webp 960w" imagesizes="(min-width: 900px) 440px, (min-width: 480px) 400px, 90vw" fetchpriority="high">
+<style>
+/* Deepu Kattoor — portfolio
+   Palette: backwater blue on ink-tinted neutrals. One accent, used sparingly. */
+
+
+:root {
+  /* Light — sky over the backwaters */
+  --bg: #f2f7ff;
+  --bg-deep: #e4effe;
+  --card: #ffffff;
+  --raised: #e8f1ff;
+  --text: #0a1a33;
+  --text-2: #344865;
+  --text-3: #3f5677;
+  --line: rgba(20, 70, 150, 0.1);
+  --line-strong: rgba(20, 70, 150, 0.2);
+  --accent: #1769d6;
+  --accent-ink: #1054a8;
+  --accent-soft: rgba(23, 105, 214, 0.09);
+  --sky: #4aa3ff;
+  --sky-soft: rgba(74, 163, 255, 0.16);
+  --on-accent: #ffffff;
+  --shadow-sm: 0 1px 2px rgba(10, 40, 90, 0.06);
+  --shadow-lg: 0 22px 50px -24px rgba(10, 50, 120, 0.35);
+  --scrim: rgba(3, 10, 26, 0.94);
+  --hero-glow: radial-gradient(60% 70% at 85% 20%, rgba(74, 163, 255, 0.22), transparent 70%),
+               radial-gradient(50% 60% at 0% 100%, rgba(23, 105, 214, 0.08), transparent 70%);
+  --page-glow: none;
+
+  --font-body: "Anek Malayalam", "Noto Sans Malayalam", system-ui, sans-serif;
+  --font-display: "Noto Serif Malayalam", "Newsreader", Georgia, serif;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 160ms;
+  --t-mid: 220ms;
+  --t-slow: 480ms;
+  --t-reveal: 760ms;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+
+  --wrap: 1240px;
+  --gutter: 20px;
+  --header-h: 64px;
+  color-scheme: light;
+}
+
+:root[lang="en"] { --font-display: "Newsreader", "Noto Serif Malayalam", Georgia, serif; }
+
+:root[data-theme="dark"] {
+  /* Dark — true black with the blue accent */
+  --bg: #050506;
+  --bg-deep: #000000;
+  --card: #111114;
+  --raised: #1b1b20;
+  --text: #f3f4f6;
+  --text-2: #b3b7bf;
+  --text-3: #8c919b;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --accent: #5ab0ff;
+  --accent-ink: #84c4ff;
+  --accent-soft: rgba(90, 176, 255, 0.13);
+  --sky: #7cc4ff;
+  --sky-soft: rgba(124, 196, 255, 0.16);
+  --on-accent: #03101f;
+  --shadow-sm: none;
+  --shadow-lg: 0 28px 70px -28px rgba(0, 6, 20, 0.85);
+  --hero-glow: radial-gradient(55% 65% at 85% 15%, rgba(90, 176, 255, 0.13), transparent 70%),
+               radial-gradient(45% 55% at 5% 95%, rgba(64, 120, 255, 0.06), transparent 70%);
+  --page-glow: none;
+  color-scheme: dark;
+}
+
+@media (min-width: 768px) { :root { --gutter: 32px; } }
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+body {
+  margin: 0;
+  background: var(--page-glow) no-repeat, var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--t-slow) var(--ease), color var(--t-slow) var(--ease);
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.3; margin: 0; letter-spacing: 0; }
+p { margin: 0; }
+ul, ol, dl { margin: 0; padding: 0; }
+.icon { width: 18px; height: 18px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.icon--fill { fill: currentColor; stroke: none; }
+.num { font-variant-numeric: tabular-nums; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; border-radius: 6px; }
+
+.skip {
+  position: fixed; left: 16px; top: -60px; z-index: 100;
+  background: var(--text); color: var(--bg); padding: 8px 16px; border-radius: var(--r-sm);
+  transition: top var(--t-fast) var(--ease);
+}
+.skip:focus { top: 12px; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Signature: the waterline */
+.waterline { display: block; width: 72px; height: 10px; color: var(--sky); }
+.waterline path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+
+/* ---------- Header ---------- */
+.header {
+  position: sticky; top: 0; z-index: 40;
+  height: var(--header-h);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: saturate(1.2) blur(12px);
+  -webkit-backdrop-filter: saturate(1.2) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-mid) var(--ease), background-color var(--t-slow) var(--ease);
+}
+.header.is-scrolled { border-bottom-color: var(--line); }
+.header__in { height: 100%; display: flex; align-items: center; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 18px; font-weight: 500; line-height: 1; }
+.brand__mark {
+  width: 32px; height: 32px; border-radius: var(--r-sm);
+  display: grid; place-items: center;
+  background: var(--accent); color: var(--on-accent);
+  font-size: 16px; font-weight: 500; font-family: var(--font-display);
+  padding-top: 3px;
+}
+.nav { margin-left: auto; display: none; gap: 4px; }
+.nav a {
+  position: relative; padding: 6px 12px; border-radius: var(--r-sm);
+  color: var(--text-2); font-size: 15px;
+  transition: color var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease);
+}
+.nav a:hover { color: var(--text); background: var(--raised); }
+.nav a.is-active { color: var(--text); }
+.nav a.is-active::after {
+  content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 4px;
+  background: var(--sky);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 4'%3E%3Cpath d='M0 2 Q3 0 6 2 T12 2 T18 2 T24 2' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x left center / 12px 4px;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 4'%3E%3Cpath d='M0 2 Q3 0 6 2 T12 2 T18 2 T24 2' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x left center / 12px 4px;
+}
+
+.tools { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+@media (min-width: 900px) { .nav + .tools { margin-left: 8px; } }
+.tool {
+  height: 40px; min-width: 40px; padding: 0 10px; border-radius: var(--r-sm);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  color: var(--text-2); font-size: 14px;
+  transition: color var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease);
+}
+.tool:hover { color: var(--text); background: var(--raised); }
+.tool:active { transform: scale(0.97); }
+.lang { border: 1px solid var(--line-strong); }
+.lang b { font-weight: 500; color: var(--text); }
+.theme-btn .i-moon { display: none; }
+:root[data-theme="dark"] .theme-btn .i-sun { display: none; }
+:root[data-theme="dark"] .theme-btn .i-moon { display: block; }
+.menu-btn .i-x { display: none; }
+.menu-open .menu-btn .i-x { display: block; }
+.menu-open .menu-btn .i-menu { display: none; }
+
+.sheet {
+  position: fixed; inset: var(--header-h) 0 auto 0; z-index: 39;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding: 8px var(--gutter) 20px;
+  opacity: 0; transform: translateY(-8px); pointer-events: none;
+  transition: opacity var(--t-mid) var(--ease), transform var(--t-mid) var(--ease);
+}
+.menu-open .sheet { opacity: 1; transform: none; pointer-events: auto; }
+.sheet a {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 52px; font-size: 18px; border-bottom: 1px solid var(--line);
+}
+.sheet a:last-child { border-bottom: 0; }
+.sheet .icon { color: var(--text-3); }
+
+@media (min-width: 900px) {
+  .nav { display: flex; }
+  .menu-btn, .sheet { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero { position: relative; padding: 32px 0 48px; overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 100%;
+  background: var(--hero-glow), linear-gradient(180deg, var(--bg-deep), var(--bg) 75%);
+  z-index: -1;
+}
+.hero__grid { display: grid; gap: 40px; align-items: center; }
+.hero__roles { display: flex; flex-wrap: wrap; gap: 4px 12px; color: var(--accent-ink); font-size: 15px; margin-bottom: 16px; }
+.hero__roles span:not(:last-child)::after { content: "·"; margin-left: 12px; color: var(--text-3); }
+.hero h1 { font-size: clamp(42px, 9vw, 76px); line-height: 1.12; font-weight: 500; }
+:root[lang="en"] .hero h1 { letter-spacing: -0.02em; line-height: 1.04; }
+.hero .waterline { margin: 20px 0 24px; width: 96px; }
+.hero__lead { font-size: clamp(18px, 2.2vw, 20px); line-height: 1.75; color: var(--text-2); max-width: 34rem; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 20px; border-radius: 10px;
+  font-size: 16px; font-weight: 500;
+  transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.btn:active { transform: scale(0.97); }
+.btn--primary { background: var(--accent); color: var(--on-accent); box-shadow: inset 0 1px 0 rgba(255,255,255,0.14); }
+.btn--primary:hover { background: color-mix(in srgb, var(--accent) 88%, #000); }
+.btn--ghost { border: 1px solid var(--line-strong); color: var(--text); background: var(--card); }
+.btn--ghost:hover { background: var(--raised); }
+
+.portrait { position: relative; max-width: 440px; margin: 0 auto; width: 100%; }
+.portrait__frame {
+  position: relative; border-radius: var(--r-xl); overflow: hidden;
+  aspect-ratio: 4 / 5; background: #1c3f7a;
+  box-shadow: var(--shadow-lg);
+}
+.portrait__frame img { width: 100%; height: 100%; object-fit: cover; }
+.portrait__frame::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+.latest {
+  position: absolute; left: -12px; bottom: 24px; right: 24px; max-width: 300px;
+  display: flex; gap: 12px; align-items: center;
+  padding: 12px; border-radius: var(--r-lg);
+  background: var(--card); border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease);
+}
+.latest:hover { transform: translateY(-2px); border-color: var(--line-strong); }
+.latest img { width: 56px; height: 72px; object-fit: cover; border-radius: 4px; flex: none; }
+.latest small { display: block; color: var(--text-3); font-size: 13px; line-height: 1.4; }
+.latest strong { display: block; font-family: var(--font-display); font-weight: 500; font-size: 15px; line-height: 1.45; margin-top: 2px; }
+
+@media (min-width: 900px) {
+  .hero { padding: 64px 0 72px; min-height: calc(100svh - var(--header-h) - 120px); display: flex; align-items: center; }
+  .hero__grid { grid-template-columns: 1.15fr 0.85fr; gap: 64px; }
+  .portrait { margin: 0 0 0 auto; }
+  .latest { left: -48px; }
+}
+
+/* Stats */
+.stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--card); }
+.stats ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); }
+.stats li { padding: 20px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stats li:nth-child(2n) { border-right: 0; }
+.stats li:last-child { grid-column: 1 / -1; border-bottom: 0; border-right: 0; }
+.stats strong { display: block; font-family: var(--font-display); font-weight: 500; font-size: 32px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stats span { color: var(--text-2); font-size: 15px; }
+@media (min-width: 768px) {
+  .stats ul { grid-template-columns: repeat(5, 1fr); }
+  .stats li { border-bottom: 0; padding: 28px 24px; }
+  .stats li:nth-child(2n) { border-right: 1px solid var(--line); }
+  .stats li:last-child { grid-column: auto; }
+  .stats li:first-child { padding-left: 0; }
+}
+
+/* ---------- Sections ---------- */
+.section { padding: 64px 0; }
+@media (min-width: 900px) { .section { padding: 96px 0; } }
+.eyebrow { color: var(--accent-ink); font-size: 15px; margin-bottom: 8px; }
+.section-title { font-size: clamp(28px, 4vw, 36px); }
+.section-head { margin-bottom: 32px; }
+.section-head .waterline { margin-top: 12px; }
+
+/* ---------- Bio + Gallery ---------- */
+.split { display: grid; gap: 56px; }
+.split > * { min-width: 0; }
+@media (min-width: 1024px) {
+  .split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+  .gallery { position: sticky; top: calc(var(--header-h) + 16px); }
+}
+
+.bio { display: grid; gap: 40px; }
+.bio__intro { font-size: 18px; color: var(--text); }
+.bio__intro p + p { margin-top: 16px; }
+.bio h3 { font-size: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.bio h3 .icon { color: var(--accent-ink); }
+
+.facts { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.facts > div { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+:root[lang="en"] .facts > div { grid-template-columns: 120px 1fr; }
+.facts dt { color: var(--text-3); font-size: 15px; }
+.facts dd { margin: 0; }
+
+.note {
+  padding: 16px 20px; border-radius: var(--r-md);
+  background: var(--accent-soft); color: var(--text);
+  border-left: 2px solid var(--accent-ink);
+}
+
+/* Timeline of books */
+.timeline { list-style: none; position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px;
+  background: linear-gradient(var(--line-strong), var(--line-strong)) center / 1px 100% no-repeat;
+}
+.timeline li { position: relative; padding: 0 0 24px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before {
+  content: ""; position: absolute; left: -27px; top: 9px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent-ink);
+}
+.timeline li:last-child::before { background: var(--accent-ink); }
+.timeline time { display: block; font-size: 14px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.timeline strong { font-family: var(--font-display); font-weight: 500; font-size: 18px; display: block; line-height: 1.5; }
+.timeline span { color: var(--text-2); font-size: 15px; }
+
+.works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+.works div { padding: 14px 12px; border-radius: var(--r-md); background: var(--card); border: 1px solid var(--line); }
+.works strong { display: block; font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; }
+.works span { font-size: 14px; color: var(--text-2); line-height: 1.4; display: block; }
+.prose { color: var(--text-2); }
+.prose strong { color: var(--text); font-weight: 500; }
+
+.awards { list-style: none; border-top: 1px solid var(--line); }
+.awards li {
+  display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.55;
+}
+.awards small { color: var(--text-3); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.awards-group + .awards-group { margin-top: 24px; }
+.awards-group h4 { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--text-3); margin-bottom: 8px; }
+
+/* Gallery */
+.gallery {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-xl);
+  padding: 16px; box-shadow: var(--shadow-sm);
+}
+@media (min-width: 768px) { .gallery { padding: 20px; } }
+.gallery__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 4px 4px 16px; }
+.gallery__head h2 { font-size: 24px; }
+.gallery__count { color: var(--text-3); font-size: 14px; font-variant-numeric: tabular-nums; }
+
+.folders {
+  display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity;
+  margin: 0 -16px; padding: 0 16px 12px; scrollbar-width: none;
+}
+.folders::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) { .folders { margin: 0; padding: 0 0 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); overflow: visible; } }
+@media (min-width: 1024px) { .folders { grid-template-columns: repeat(3, 1fr); } .folder { min-height: 48px; padding-right: 8px; font-size: 14.5px; } .folder__cover { width: 36px; height: 36px; } }
+.folder {
+  scroll-snap-align: start; flex: none;
+  display: flex; align-items: center; gap: 10px;
+  min-height: 52px; padding: 6px 14px 6px 6px; border-radius: var(--r-md);
+  border: 1px solid var(--line); background: var(--bg);
+  color: var(--text-2); font-size: 15px; line-height: 1.3; text-align: left;
+  transition: background-color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.folder:hover { color: var(--text); border-color: var(--line-strong); }
+.folder[aria-selected="true"] { background: var(--raised); color: var(--text); border-color: var(--accent-ink); }
+.folder__cover {
+  width: 40px; height: 40px; border-radius: 6px; overflow: hidden; flex: none;
+  background: var(--raised); display: grid; place-items: center; color: var(--text-3);
+}
+.folder__cover img { width: 100%; height: 100%; object-fit: cover; }
+.folder small { display: block; font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+
+.panel[hidden] { display: none; }
+.panel.is-entering .tile { animation: tileIn var(--t-slow) var(--ease) both; animation-delay: calc(var(--i, 0) * 40ms); }
+@keyframes tileIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.grid { columns: 2; column-gap: 8px; }
+@media (min-width: 560px) { .grid { columns: 3; column-gap: 10px; } }
+.gallery__scroll { }
+@media (min-width: 1024px) {
+  .gallery__scroll { max-height: calc(100vh - var(--header-h) - 232px); overflow-y: auto; margin-right: -8px; padding-right: 8px; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+}
+.tile {
+  break-inside: avoid; margin-bottom: 8px; width: 100%;
+  display: block; position: relative; border-radius: var(--r-sm); overflow: hidden;
+  background: var(--raised);
+}
+@media (min-width: 560px) { .tile { margin-bottom: 10px; } }
+.tile img { width: 100%; height: auto; transition: transform var(--t-slow) var(--ease), opacity var(--t-mid) var(--ease); }
+.tile:hover img { transform: scale(1.03); }
+.tile::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition: box-shadow var(--t-fast) var(--ease);
+}
+.tile:hover::after { box-shadow: inset 0 0 0 1px var(--line-strong); }
+.tile.is-extra { display: none; }
+.panel.is-expanded .tile.is-extra { display: block; }
+.more { width: 100%; margin-top: 8px; }
+.panel.is-expanded .more { display: none; }
+@media (min-width: 1024px) { .tile.is-extra { display: block; } .more { display: none; } }
+
+.video-tile { aspect-ratio: 16 / 9; }
+.video-tile img { height: 100%; object-fit: cover; }
+.video-tile .play {
+  position: absolute; inset: 0; display: grid; place-items: center;
+}
+.video-tile .play span {
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(6, 10, 20, 0.66); color: #fff;
+  transition: background-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.video-tile:hover .play span { background: var(--accent); }
+.video-tile .play .icon { width: 20px; height: 20px; margin-left: 3px; }
+.video-tile figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 12px 10px;
+  background: linear-gradient(transparent, rgba(6,10,20,0.78));
+  color: #fff; font-size: 14px; line-height: 1.4;
+}
+.grid--video { columns: auto; display: grid; grid-template-columns: 1fr; gap: 10px; }
+.grid--video .tile { margin: 0; }
+@media (min-width: 560px) { .grid--video { grid-template-columns: 1fr 1fr; } }
+.panel:not(.is-expanded) .grid--video .tile.is-extra { display: none; }
+@media (min-width: 1024px) { .panel:not(.is-expanded) .grid--video .tile.is-extra { display: block; } }
+
+.empty {
+  padding: 40px 20px; text-align: center; border: 1px dashed var(--line-strong);
+  border-radius: var(--r-md); color: var(--text-2);
+}
+.empty .icon { width: 28px; height: 28px; margin: 0 auto 12px; color: var(--text-3); }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 80; width: 100%; height: 100%; max-width: none; max-height: none;
+  margin: 0; padding: 0; border: 0; background: var(--scrim); color: #fff;
+  display: grid; grid-template-rows: auto 1fr auto auto;
+  opacity: 0; transition: opacity var(--t-mid) var(--ease);
+}
+.lightbox:not([open]) { display: none; }
+.lightbox.is-open { opacity: 1; }
+.lightbox::backdrop { background: transparent; }
+.lb__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; padding-top: max(12px, env(safe-area-inset-top)); }
+.lb__count { font-size: 14px; color: rgba(255,255,255,0.72); font-variant-numeric: tabular-nums; }
+.lb__btn {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  color: #fff; background: rgba(255,255,255,0.08);
+  transition: background-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.lb__btn:hover { background: rgba(255,255,255,0.16); }
+.lb__btn:active { transform: scale(0.96); }
+.lb__stage { position: relative; display: grid; place-items: center; min-height: 0; padding: 0 8px; touch-action: pan-y; overflow: hidden; }
+.lb__stage img, .lb__stage iframe {
+  max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 4px;
+  transition: opacity var(--t-mid) var(--ease), transform var(--t-slow) var(--ease);
+}
+.lb__stage iframe { width: min(100%, 1100px); aspect-ratio: 16 / 9; height: auto; border: 0; background: #000; }
+.lb__stage img.is-loading { opacity: 0; transform: scale(0.98); }
+.lb__nav { position: absolute; top: 50%; transform: translateY(-50%); display: none; z-index: 2; }
+.lb__nav:active { transform: translateY(-50%) scale(0.96); }
+.lb__nav--prev { left: 16px; }
+.lb__nav--next { right: 16px; }
+@media (min-width: 768px) { .lb__nav { display: grid; } .lb__stage { padding: 0 80px; } }
+.lb__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+.lb__cap { font-size: 15px; color: rgba(255,255,255,0.86); line-height: 1.5; }
+.lb__mobnav { display: flex; gap: 8px; }
+@media (min-width: 768px) { .lb__mobnav { display: none; } }
+
+/* ---------- Contact ---------- */
+.contact { background: var(--bg-deep); border-top: 1px solid var(--line); }
+.contact__grid { display: grid; gap: 40px; }
+@media (min-width: 900px) { .contact__grid { grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start; } }
+.contact__lead { color: var(--text-2); max-width: 28rem; margin-top: 16px; }
+.channels { display: grid; gap: 12px; }
+@media (min-width: 560px) { .channels { grid-template-columns: 1fr 1fr; } }
+.channel {
+  display: flex; align-items: center; gap: 16px; padding: 16px; min-height: 80px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+  transition: border-color var(--t-fast) var(--ease), transform var(--t-mid) var(--ease), background-color var(--t-fast) var(--ease);
+}
+.channel:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.channel__icon {
+  width: 44px; height: 44px; border-radius: var(--r-md); flex: none;
+  display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-ink);
+}
+.channel__icon .icon { width: 20px; height: 20px; }
+.channel small { display: block; color: var(--text-3); font-size: 14px; line-height: 1.4; }
+.channel span { display: block; font-size: 16px; line-height: 1.45; word-break: break-word; }
+.channel .channel__icon { display: grid; }
+.channel .arrow { margin-left: auto; color: var(--text-3); transition: color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease); }
+.channel:hover .arrow { color: var(--accent-ink); transform: translate(2px, -2px); }
+.channel--wide { grid-column: 1 / -1; }
+div.channel--wide { align-items: flex-start; }
+@media (max-width: 420px) { .channel { gap: 12px; padding: 14px; } .channel .arrow { display: none; } .channel span { font-size: 15.5px; } }
+.channel--wide address { font-style: normal; font-size: 16px; line-height: 1.6; }
+.channel.is-pending { opacity: 0.6; }
+
+/* ---------- Footer ---------- */
+.footer { padding: 24px 0 32px; border-top: 1px solid var(--line); color: var(--text-3); font-size: 14px; background: var(--bg-deep); }
+.footer__in { padding-right: 56px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+.footer a:hover { color: var(--text); }
+
+.to-top {
+  position: fixed; right: 16px; bottom: 16px; z-index: 30;
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--card); border: 1px solid var(--line-strong); color: var(--text-2);
+  box-shadow: var(--shadow-lg);
+  opacity: 0; transform: translateY(8px); pointer-events: none;
+  transition: opacity var(--t-mid) var(--ease), transform var(--t-mid) var(--ease), color var(--t-fast) var(--ease);
+}
+.to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { color: var(--text); }
+.to-top { margin-bottom: env(safe-area-inset-bottom); }
+
+/* ---------- Reveal ---------- */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity var(--t-reveal) var(--ease), transform var(--t-reveal) var(--ease), clip-path 900ms var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+.js .reveal--left { transform: translateX(-32px); }
+.js .reveal--right { transform: translateX(32px); }
+.js .reveal--scale { transform: scale(0.96); }
+.js .reveal--clip { clip-path: inset(12% 12% 12% 12% round 20px); transform: scale(1.02); opacity: 1; }
+.js .reveal--clip.is-in { clip-path: inset(0 0 0 0 round 20px); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+
+/* ---------- Interaction & scroll layer ---------- */
+
+/* Reading progress */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; pointer-events: none; }
+.progress span { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(var(--p, 0));
+  background: linear-gradient(90deg, var(--accent), var(--sky)); }
+
+/* Hero name: words rise in */
+.hero h1 .w { display: inline-block; overflow: hidden; padding: 0.12em 0.04em 0.4em; margin: -0.12em -0.04em -0.4em; vertical-align: top; }
+.hero h1 .w > span { display: inline-block; transform: translateY(105%); opacity: 0; transition: transform 1000ms var(--ease), opacity 600ms var(--ease); transition-delay: calc(120ms + var(--w, 0) * 110ms); }
+.is-loaded .hero h1 .w > span { transform: none; opacity: 1; }
+.hero h1.reveal { opacity: 1; transform: none; }
+.hero .portrait, .hero .portrait.reveal { opacity: 1; transform: none; }
+
+/* Waterline draws itself */
+.js .waterline path { stroke-dasharray: 130; stroke-dashoffset: 130; transition: stroke-dashoffset 1400ms var(--ease) 200ms; }
+.js .is-in .waterline path, .js .waterline.is-in path, .is-loaded .hero .waterline path { stroke-dashoffset: 0; }
+
+/* Portrait: tilt + parallax */
+.portrait { perspective: 1000px; }
+.portrait__tilt { transform-style: preserve-3d; transition: transform 500ms var(--ease); will-change: transform; }
+.portrait__frame img { transform: scale(1.08) translateY(var(--py, 0px)); transition: transform 120ms linear; }
+.portrait__shine { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity var(--t-mid) var(--ease);
+  background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.18), transparent 45%); }
+.portrait:hover .portrait__shine { opacity: 1; }
+.portrait__ring { position: absolute; inset: -14px -14px 14px 14px; border-radius: 24px; border: 1px solid var(--line-strong); z-index: -1; transform: translateZ(-40px); }
+.latest { transform: translateZ(40px); }
+.latest:hover { transform: translateZ(40px) translateY(-3px); }
+
+/* Buttons: arrow nudge + press ripple */
+.btn .icon { width: 16px; height: 16px; transition: transform var(--t-mid) var(--ease); }
+.btn:hover .icon { transform: translateX(3px); }
+.btn { position: relative; overflow: hidden; isolation: isolate; }
+.btn .ripple { position: absolute; border-radius: 50%; transform: scale(0); opacity: 0.35; background: currentColor; pointer-events: none; z-index: -1; animation: ripple 600ms var(--ease) forwards; }
+@keyframes ripple { to { transform: scale(2.6); opacity: 0; } }
+
+/* Spotlight on cards follows the pointer */
+.spot { position: relative; isolation: isolate; }
+.spot::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; opacity: 0;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), var(--sky-soft), transparent 70%);
+  transition: opacity var(--t-mid) var(--ease); }
+.spot:hover::before { opacity: 1; }
+
+/* Stats lift */
+.stats li { transition: background-color var(--t-mid) var(--ease); }
+.stats li:hover { background: var(--raised); }
+.stats li:hover strong { color: var(--accent-ink); }
+.stats strong { transition: color var(--t-mid) var(--ease); }
+
+/* Scroll band: titles drift sideways as you scroll */
+.band { overflow: hidden; padding: 28px 0; border-bottom: 1px solid var(--line); background: var(--bg); user-select: none; }
+.band__row { display: flex; gap: 40px; white-space: nowrap; width: max-content; will-change: transform; }
+.band__row + .band__row { margin-top: 12px; }
+.band__row span { font-family: var(--font-display); font-size: clamp(26px, 4.4vw, 52px); line-height: 1.3; color: var(--text); display: inline-flex; align-items: center; gap: 40px; }
+.band__row span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--sky); flex: none; }
+.band__row--alt span { color: transparent; -webkit-text-stroke: 1.2px #547cb0; }
+:root[data-theme="dark"] .band__row--alt span { -webkit-text-stroke: 1.2px rgba(150,195,255,0.6); }
+/* Timeline fills as you scroll */
+.timeline::after { content: ""; position: absolute; left: 6px; top: 8px; width: 2px; height: calc(100% - 16px);
+  background: linear-gradient(var(--accent), var(--sky)); transform-origin: top; transform: scaleY(var(--tp, 0)); border-radius: 2px; }
+.timeline li::before { z-index: 1; transition: background-color var(--t-mid) var(--ease), transform var(--t-mid) var(--ease); }
+.timeline li.is-reached::before { background: var(--accent-ink); }
+.timeline li:hover::before { transform: scale(1.25); }
+.timeline li:last-child::before { background: var(--bg); }
+.timeline li:first-child::before { background: var(--accent-ink); }
+.timeline li.is-reached:last-child::before { background: var(--accent-ink); }
+
+/* Awards hover */
+.awards li { transition: padding var(--t-mid) var(--ease), color var(--t-fast) var(--ease); }
+.awards li:hover { padding-left: 8px; color: var(--accent-ink); }
+
+/* Works mini cards */
+.works div { transition: transform var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease); }
+.works div:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+
+/* Gallery tile overlay */
+.tile .zoom { position: absolute; right: 8px; bottom: 8px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(3, 12, 30, 0.6); color: #fff; opacity: 0; transform: translateY(6px) scale(0.9); transition: opacity var(--t-mid) var(--ease), transform var(--t-mid) var(--ease); z-index: 1; }
+.tile .zoom .icon { width: 16px; height: 16px; }
+.tile:hover .zoom, .tile:focus-visible .zoom { opacity: 1; transform: none; }
+.tile img { filter: saturate(0.95); }
+.tile:hover img { filter: saturate(1.08); }
+.video-tile .idx { position: absolute; left: 8px; top: 8px; z-index: 1; min-width: 28px; height: 24px; padding: 0 8px; border-radius: 6px;
+  display: grid; place-items: center; font-size: 13px; background: rgba(3, 12, 30, 0.66); color: #fff; font-variant-numeric: tabular-nums; }
+.folder { transition: background-color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease); }
+.folder:active { transform: scale(0.97); }
+.folder__cover img { transition: transform var(--t-slow) var(--ease); }
+.folder:hover .folder__cover img { transform: scale(1.12); }
+
+/* Back to top with progress ring */
+.to-top svg.ring { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); transform: rotate(-90deg); pointer-events: none; }
+.to-top svg.ring circle { fill: none; stroke: var(--sky); stroke-width: 2; stroke-dasharray: 138; stroke-dashoffset: calc(138 - 138 * var(--p, 0)); }
+
+/* Lightbox thumbnails strip */
+.lb__strip { display: flex; gap: 6px; overflow-x: auto; padding: 0 16px 8px; scrollbar-width: none; justify-content: safe center; }
+.lb__strip::-webkit-scrollbar { display: none; }
+.lb__strip button { flex: none; width: 52px; height: 52px; border-radius: 6px; overflow: hidden; opacity: 0.45; outline-offset: 2px; transition: opacity var(--t-fast) var(--ease), transform var(--t-fast) var(--ease); }
+.lb__strip button:hover { opacity: 0.8; }
+.lb__strip button[aria-current="true"] { opacity: 1; box-shadow: 0 0 0 2px var(--sky); }
+.lb__strip img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 560px) { .lb__strip { display: none; } }
+
+/* Section titles: underline follows */
+.section-title { position: relative; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
+  .js .reveal { opacity: 1; transform: none; clip-path: none; }
+  .band__row { transform: none !important; }
+  .hero h1 .w > span { transform: none; opacity: 1; }
+  .waterline path { stroke-dashoffset: 0 !important; }
+}
+
+@media print {
+  .header, .gallery, .to-top, .hero__cta { display: none; }
+  body { background: #fff; color: #000; }
+}
+.video-tile img { color: transparent; font-size: 0; background: var(--raised); }
+
+/* Videos folder cover */
+.folder__cover--video { position: relative; }
+.folder__play { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(3, 12, 30, 0.35); color: #fff; }
+.folder__play .icon { width: 14px; height: 14px; }
+
+/* Lightbox: YouTube link + fallback when embedding is blocked */
+.lb__info { display: grid; gap: 8px; justify-items: start; }
+.lb__yt { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 999px;
+  background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; transition: background-color var(--t-fast) var(--ease); }
+.lb__yt:hover { background: #e62117; }
+.lb__yt[hidden] { display: none; }
+.lb__fallback { position: relative; width: min(100%, 1000px); aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; }
+.lb__fallback img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; max-width: none; max-height: none; }
+.lb__fallback div { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 24px; text-align: center; }
+.lb__fallback p { max-width: 30rem; font-size: 16px; line-height: 1.6; color: #fff; }
+.lb__fallback a { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: #e62117; color: #fff; font-weight: 500;
+  transition: transform var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease); }
+.lb__fallback a:hover { background: #c41a12; }
+.lb__fallback a:active { transform: scale(0.97); }
+
+/* Where to buy */
+.shops { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.shop {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px 0 8px;
+  border-radius: 10px; border: 1px solid var(--line-strong); background: var(--card);
+  font-size: 14.5px; color: var(--text); line-height: 1.2;
+  transition: border-color var(--t-fast) var(--ease), background-color var(--t-fast) var(--ease), transform var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease);
+}
+.shop img { width: 28px; height: 28px; padding: 4px; border-radius: 6px; background: #fff; object-fit: contain; flex: none; }
+.shop .icon { width: 14px; height: 14px; color: var(--text-3); transition: transform var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+.shop:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.shop:hover .icon { transform: translate(2px, -2px); }
+.shop:active { transform: scale(0.97); }
+.shop--amazon:hover { border-color: #ff9900; }
+.shop--amazon:hover .icon { color: #ff9900; }
+.shop--booklove:hover { border-color: var(--accent-ink); }
+.shop--booklove:hover .icon { color: var(--accent-ink); }
+.timeline .shop span { color: var(--text); font-size: 14.5px; }
+
+</style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -252,10 +932,10 @@
         <span class="portrait__ring" aria-hidden="true"></span>
         <div class="portrait__frame">
           <span class="portrait__shine" aria-hidden="true"></span>
-          <img src="Assets/img/portrait.webp" srcset="Assets/img/portrait-480.webp 480w, Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, 90vw" width="960" height="1200" alt="ദീപു കാട്ടൂർ — പോർട്രെയ്റ്റ്" fetchpriority="high">
+          <img src="Assets/img/portrait-480.webp" srcset="Assets/img/portrait-360.webp 360w, Assets/img/portrait-480.webp 480w, Assets/img/portrait.webp 960w" sizes="(min-width: 900px) 440px, (min-width: 480px) 400px, 90vw" width="960" height="1200" alt="ദീപു കാട്ടൂർ — പോർട്രെയ്റ്റ്" fetchpriority="high">
         </div>
         <a class="latest" href="#works">
-          <img src="Assets/img/books/thumb/02.webp" width="56" height="72" alt="" loading="lazy" decoding="async">
+          <img src="Assets/img/books/thumb/02-badge.webp" width="56" height="72" alt="" loading="lazy" decoding="async">
           <span><small>പുതിയ പുസ്തകം · 2026</small><strong>പെഡഗോഗിയിൽ പ്രതിപാദിക്കാത്ത ചിലത്</strong></span>
         </a>
        </div>
@@ -263,7 +943,7 @@
     </div>
   </section>
 
-  <section class="stats" aria-label="എഴുത്തും സിനിമയും">
+  <section class="stats" aria-label="പ്രധാന വിവരങ്ങൾ">
     <div class="wrap"><ul><li class="reveal spot" style="--i:0"><strong class="num" data-count="4" data-suffix="">4</strong><span>പുസ്തകങ്ങൾ</span></li><li class="reveal spot" style="--i:1"><strong class="num" data-count="10" data-suffix="">10</strong><span>ഹ്രസ്വചിത്രങ്ങൾ</span></li><li class="reveal spot" style="--i:2"><strong class="num" data-count="2" data-suffix="">2</strong><span>സംഗീത ആൽബങ്ങൾ</span></li><li class="reveal spot" style="--i:3"><strong class="num" data-count="1" data-suffix="">1</strong><span>ഒ.ടി.ടി. സിനിമ</span></li><li class="reveal spot" style="--i:4"><strong class="num" data-count="15" data-suffix="+">15+</strong><span>പുരസ്കാരങ്ങൾ</span></li></ul></div>
   </section>
 
@@ -313,7 +993,7 @@
       
 <section class="gallery reveal reveal--scale" id="gallery" aria-labelledby="gallery-title">
   <div class="gallery__head"><h2 id="gallery-title">ഗാലറി</h2><span class="gallery__count num">5</span></div>
-  <div class="folders" role="tablist" aria-label="ഗാലറി"><button type="button" class="folder" role="tab" id="tab-books" aria-controls="panel-books" aria-selected="true" tabindex="0"><span class="folder__cover"><img src="Assets/img/books/thumb/01.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>പുസ്തകങ്ങൾ<small class="num">5</small></span></button><button type="button" class="folder" role="tab" id="tab-films" aria-controls="panel-films" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/films/thumb/01.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>ഹ്രസ്വചിത്രങ്ങൾ<small class="num">5</small></span></button><button type="button" class="folder" role="tab" id="tab-videos" aria-controls="panel-videos" aria-selected="false" tabindex="-1"><span class="folder__cover folder__cover--video"><img src="https://i.ytimg.com/vi/O4Xa52V6V5k/mqdefault.jpg" width="40" height="40" alt="" loading="lazy" decoding="async"><span class="folder__play"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><span>വീഡിയോകൾ<small class="num">13</small></span></button><button type="button" class="folder" role="tab" id="tab-stories" aria-controls="panel-stories" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/stories/thumb/01.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>കഥകൾ<small class="num">30</small></span></button><button type="button" class="folder" role="tab" id="tab-news" aria-controls="panel-news" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/news/thumb/01.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>വാർത്തകൾ<small class="num">15</small></span></button><button type="button" class="folder" role="tab" id="tab-functions" aria-controls="panel-functions" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/functions/thumb/01.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>ചടങ്ങുകൾ<small class="num">24</small></span></button><button type="button" class="folder" role="tab" id="tab-photos" aria-controls="panel-photos" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/photos/thumb/01.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>ചിത്രങ്ങൾ<small class="num">8</small></span></button></div>
+  <div class="folders" role="tablist" aria-label="ഗാലറി"><button type="button" class="folder" role="tab" id="tab-books" aria-controls="panel-books" aria-selected="true" tabindex="0"><span class="folder__cover"><img src="Assets/img/books/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>പുസ്തകങ്ങൾ<small class="num">5</small></span></button><button type="button" class="folder" role="tab" id="tab-films" aria-controls="panel-films" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/films/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>ഹ്രസ്വചിത്രങ്ങൾ<small class="num">5</small></span></button><button type="button" class="folder" role="tab" id="tab-videos" aria-controls="panel-videos" aria-selected="false" tabindex="-1"><span class="folder__cover folder__cover--video"><img src="https://i.ytimg.com/vi/O4Xa52V6V5k/mqdefault.jpg" width="40" height="40" alt="" loading="lazy" decoding="async"><span class="folder__play"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><span>വീഡിയോകൾ<small class="num">13</small></span></button><button type="button" class="folder" role="tab" id="tab-stories" aria-controls="panel-stories" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/stories/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>കഥകൾ<small class="num">30</small></span></button><button type="button" class="folder" role="tab" id="tab-news" aria-controls="panel-news" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/news/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>വാർത്തകൾ<small class="num">15</small></span></button><button type="button" class="folder" role="tab" id="tab-functions" aria-controls="panel-functions" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/functions/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>ചടങ്ങുകൾ<small class="num">24</small></span></button><button type="button" class="folder" role="tab" id="tab-photos" aria-controls="panel-photos" aria-selected="false" tabindex="-1"><span class="folder__cover"><img src="Assets/img/photos/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span>ചിത്രങ്ങൾ<small class="num">8</small></span></button></div>
   <div class="gallery__scroll"><div class="panel" id="panel-books" role="tabpanel" aria-labelledby="tab-books"><div class="grid"><a class="tile" href="Assets/img/books/01.webp" data-cap="എന്റെ പുസ്തകങ്ങൾ"><img src="Assets/img/books/thumb/01.webp" width="560" height="329" alt="ദീപു കാട്ടൂർ — എന്റെ പുസ്തകങ്ങൾ" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/books/02.webp" data-cap="പെഡഗോഗിയിൽ പ്രതിപാദിക്കാത്ത ചിലത് — കഥാസമാഹാരം, 2026"><img src="Assets/img/books/thumb/02.webp" width="560" height="417" alt="ദീപു കാട്ടൂർ — പെഡഗോഗിയിൽ പ്രതിപാദിക്കാത്ത ചിലത് — കഥാസമാഹാരം, 2026" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/books/03.webp" data-cap="റെഡ് ഡേറ്റാ ബുക്ക് — നോവൽ, 2025"><img src="Assets/img/books/thumb/03.webp" width="560" height="430" alt="ദീപു കാട്ടൂർ — റെഡ് ഡേറ്റാ ബുക്ക് — നോവൽ, 2025" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/books/04.webp" data-cap="മണപ്പാറ കനവുകൾ — കഥാസമാഹാരം, 2015"><img src="Assets/img/books/thumb/04.webp" width="560" height="421" alt="ദീപു കാട്ടൂർ — മണപ്പാറ കനവുകൾ — കഥാസമാഹാരം, 2015" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/books/05.webp" data-cap="വെനീസിലെ ഓളങ്ങൾ — കഥാസമാഹാരം, 2009"><img src="Assets/img/books/thumb/05.webp" width="392" height="560" alt="ദീപു കാട്ടൂർ — വെനീസിലെ ഓളങ്ങൾ — കഥാസമാഹാരം, 2009" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a></div></div><div class="panel" id="panel-films" role="tabpanel" aria-labelledby="tab-films" hidden><div class="grid"><a class="tile" href="Assets/img/films/01.webp" data-cap="ചെരുപ്പ് — ഹ്രസ്വചിത്രം"><img src="Assets/img/films/thumb/01.webp" width="560" height="314" alt="ദീപു കാട്ടൂർ — ചെരുപ്പ് — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/films/02.webp" data-cap="കപാൽ — ഒ.ടി.ടി. സിനിമ"><img src="Assets/img/films/thumb/02.webp" width="560" height="315" alt="ദീപു കാട്ടൂർ — കപാൽ — ഒ.ടി.ടി. സിനിമ" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/films/03.webp" data-cap="അനുരാഗ മുരളി — സംഗീത ആൽബം"><img src="Assets/img/films/thumb/03.webp" width="342" height="560" alt="ദീപു കാട്ടൂർ — അനുരാഗ മുരളി — സംഗീത ആൽബം" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/films/04.webp" data-cap="എങ്കിലുമെൻ്റെ പിള്ളേച്ചാ — ഹ്രസ്വചിത്രം"><img src="Assets/img/films/thumb/04.webp" width="383" height="560" alt="ദീപു കാട്ടൂർ — എങ്കിലുമെൻ്റെ പിള്ളേച്ചാ — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/films/05.webp" data-cap="സി.ആർ.വി. 2 — ഹ്രസ്വചിത്രം"><img src="Assets/img/films/thumb/05.webp" width="383" height="560" alt="ദീപു കാട്ടൂർ — സി.ആർ.വി. 2 — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a></div></div><div class="panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos" hidden><div class="grid grid--video"><a class="tile video-tile" href="https://youtu.be/O4Xa52V6V5k" data-yt="O4Xa52V6V5k" data-cap="ചെരുപ്പ് — ഹ്രസ്വചിത്രം"><img src="https://i.ytimg.com/vi/O4Xa52V6V5k/mqdefault.jpg" width="320" height="180" alt="ചെരുപ്പ് — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="idx">1</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>ചെരുപ്പ് — ഹ്രസ്വചിത്രം</figcaption></a><a class="tile video-tile" href="https://youtu.be/SOXmx7TgZzg" data-yt="SOXmx7TgZzg" data-cap="കപാൽ — ഭാഗം 1"><img src="https://i.ytimg.com/vi/SOXmx7TgZzg/mqdefault.jpg" width="320" height="180" alt="കപാൽ — ഭാഗം 1" loading="lazy" decoding="async"><span class="idx">2</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>കപാൽ — ഭാഗം 1</figcaption></a><a class="tile video-tile" href="https://youtu.be/PHhEsIt6kow" data-yt="PHhEsIt6kow" data-cap="കപാൽ — ഭാഗം 2"><img src="https://i.ytimg.com/vi/PHhEsIt6kow/mqdefault.jpg" width="320" height="180" alt="കപാൽ — ഭാഗം 2" loading="lazy" decoding="async"><span class="idx">3</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>കപാൽ — ഭാഗം 2</figcaption></a><a class="tile video-tile" href="https://youtu.be/tixmJTcneXM" data-yt="tixmJTcneXM" data-cap="കപാൽ — ഭാഗം 3"><img src="https://i.ytimg.com/vi/tixmJTcneXM/mqdefault.jpg" width="320" height="180" alt="കപാൽ — ഭാഗം 3" loading="lazy" decoding="async"><span class="idx">4</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>കപാൽ — ഭാഗം 3</figcaption></a><a class="tile video-tile" href="https://youtu.be/VuDY7qmmoNM" data-yt="VuDY7qmmoNM" data-cap="എങ്കിലുമെൻ്റെ പിള്ളേച്ചാ — ഹ്രസ്വചിത്രം"><img src="https://i.ytimg.com/vi/VuDY7qmmoNM/mqdefault.jpg" width="320" height="180" alt="എങ്കിലുമെൻ്റെ പിള്ളേച്ചാ — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="idx">5</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>എങ്കിലുമെൻ്റെ പിള്ളേച്ചാ — ഹ്രസ്വചിത്രം</figcaption></a><a class="tile video-tile" href="https://youtu.be/fKNKuZrQRIA" data-yt="fKNKuZrQRIA" data-cap="സി.ആർ.വി. 2 — ഹ്രസ്വചിത്രം"><img src="https://i.ytimg.com/vi/fKNKuZrQRIA/mqdefault.jpg" width="320" height="180" alt="സി.ആർ.വി. 2 — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="idx">6</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>സി.ആർ.വി. 2 — ഹ്രസ്വചിത്രം</figcaption></a><a class="tile video-tile is-extra" href="https://youtu.be/By4S4eKZM00" data-yt="By4S4eKZM00" data-cap="ഉലകവല — ഹ്രസ്വചിത്രം"><img src="https://i.ytimg.com/vi/By4S4eKZM00/mqdefault.jpg" width="320" height="180" alt="ഉലകവല — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="idx">7</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>ഉലകവല — ഹ്രസ്വചിത്രം</figcaption></a><a class="tile video-tile is-extra" href="https://youtu.be/NxUAgEMrBKY" data-yt="NxUAgEMrBKY" data-cap="അതിജീവനം — ഹ്രസ്വചിത്രം · കഥ, തിരക്കഥ: ദീപു കാട്ടൂർ · സംവിധാനം: അരുൺ ജെ."><img src="https://i.ytimg.com/vi/NxUAgEMrBKY/mqdefault.jpg" width="320" height="180" alt="അതിജീവനം — ഹ്രസ്വചിത്രം · കഥ, തിരക്കഥ: ദീപു കാട്ടൂർ · സംവിധാനം: അരുൺ ജെ." loading="lazy" decoding="async"><span class="idx">8</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>അതിജീവനം — ഹ്രസ്വചിത്രം · കഥ, തിരക്കഥ: ദീപു കാട്ടൂർ · സംവിധാനം: അരുൺ ജെ.</figcaption></a><a class="tile video-tile is-extra" href="https://youtu.be/9ErmwflnWQQ" data-yt="9ErmwflnWQQ" data-cap="ഒരു ലോക്ക്ഡൗൺ കാലം"><img src="https://i.ytimg.com/vi/9ErmwflnWQQ/mqdefault.jpg" width="320" height="180" alt="ഒരു ലോക്ക്ഡൗൺ കാലം" loading="lazy" decoding="async"><span class="idx">9</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>ഒരു ലോക്ക്ഡൗൺ കാലം</figcaption></a><a class="tile video-tile is-extra" href="https://youtu.be/1xCqA13ohTc" data-yt="1xCqA13ohTc" data-cap="അന്യം — ഹ്രസ്വചിത്രം"><img src="https://i.ytimg.com/vi/1xCqA13ohTc/mqdefault.jpg" width="320" height="180" alt="അന്യം — ഹ്രസ്വചിത്രം" loading="lazy" decoding="async"><span class="idx">10</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>അന്യം — ഹ്രസ്വചിത്രം</figcaption></a><a class="tile video-tile is-extra" href="https://youtu.be/HcuflF_oais" data-yt="HcuflF_oais" data-cap="നക്ഷത്രക്കണ്ണുള്ള പെണ്ണേ — ഗാനം"><img src="https://i.ytimg.com/vi/HcuflF_oais/mqdefault.jpg" width="320" height="180" alt="നക്ഷത്രക്കണ്ണുള്ള പെണ്ണേ — ഗാനം" loading="lazy" decoding="async"><span class="idx">11</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>നക്ഷത്രക്കണ്ണുള്ള പെണ്ണേ — ഗാനം</figcaption></a><a class="tile video-tile is-extra" href="https://youtu.be/zwv7tVms3qw" data-yt="zwv7tVms3qw" data-cap="അനുരാഗ മുരളി — സംഗീത ആൽബം · മധു കാവുങ്കൽ, രാജേഷ് ചേർത്തല"><img src="https://i.ytimg.com/vi/zwv7tVms3qw/mqdefault.jpg" width="320" height="180" alt="അനുരാഗ മുരളി — സംഗീത ആൽബം · മധു കാവുങ്കൽ, രാജേഷ് ചേർത്തല" loading="lazy" decoding="async"><span class="idx">12</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>അനുരാഗ മുരളി — സംഗീത ആൽബം · മധു കാവുങ്കൽ, രാജേഷ് ചേർത്തല</figcaption></a><a class="tile video-tile is-extra" href="https://youtu.be/HWlL-S8cJeM" data-yt="HWlL-S8cJeM" data-cap="വായനദിന സന്ദേശം — ദീപു കാട്ടൂർ"><img src="https://i.ytimg.com/vi/HWlL-S8cJeM/mqdefault.jpg" width="320" height="180" alt="വായനദിന സന്ദേശം — ദീപു കാട്ടൂർ" loading="lazy" decoding="async"><span class="idx">13</span><span class="play"><span><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg></span></span><figcaption>വായനദിന സന്ദേശം — ദീപു കാട്ടൂർ</figcaption></a></div><button type="button" class="btn btn--ghost more">എല്ലാം കാണുക <span class="num">(13)</span></button></div><div class="panel" id="panel-stories" role="tabpanel" aria-labelledby="tab-stories" hidden><div class="grid"><a class="tile" href="Assets/img/stories/01.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 1"><img src="Assets/img/stories/thumb/01.webp" width="398" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 1" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/stories/02.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 2"><img src="Assets/img/stories/thumb/02.webp" width="387" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 2" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/stories/03.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 3"><img src="Assets/img/stories/thumb/03.webp" width="343" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 3" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/stories/04.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 4"><img src="Assets/img/stories/thumb/04.webp" width="313" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 4" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/stories/05.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 5"><img src="Assets/img/stories/thumb/05.webp" width="340" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 5" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/stories/06.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 6"><img src="Assets/img/stories/thumb/06.webp" width="329" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 6" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/07.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 7"><img src="Assets/img/stories/thumb/07.webp" width="410" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 7" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/08.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 8"><img src="Assets/img/stories/thumb/08.webp" width="404" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 8" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/09.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 9"><img src="Assets/img/stories/thumb/09.webp" width="372" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 9" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/10.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 10"><img src="Assets/img/stories/thumb/10.webp" width="351" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 10" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/11.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 11"><img src="Assets/img/stories/thumb/11.webp" width="311" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 11" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/12.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 12"><img src="Assets/img/stories/thumb/12.webp" width="357" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 12" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/13.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 13"><img src="Assets/img/stories/thumb/13.webp" width="334" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 13" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/14.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 14"><img src="Assets/img/stories/thumb/14.webp" width="331" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 14" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/15.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 15"><img src="Assets/img/stories/thumb/15.webp" width="287" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 15" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/16.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 16"><img src="Assets/img/stories/thumb/16.webp" width="362" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 16" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/17.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 17"><img src="Assets/img/stories/thumb/17.webp" width="398" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 17" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/18.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 18"><img src="Assets/img/stories/thumb/18.webp" width="393" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 18" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/19.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 19"><img src="Assets/img/stories/thumb/19.webp" width="369" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 19" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/20.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 20"><img src="Assets/img/stories/thumb/20.webp" width="378" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 20" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/21.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 21"><img src="Assets/img/stories/thumb/21.webp" width="407" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 21" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/22.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 22"><img src="Assets/img/stories/thumb/22.webp" width="427" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 22" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/23.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 23"><img src="Assets/img/stories/thumb/23.webp" width="390" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 23" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/24.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 24"><img src="Assets/img/stories/thumb/24.webp" width="390" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 24" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/25.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 25"><img src="Assets/img/stories/thumb/25.webp" width="425" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 25" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/26.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 26"><img src="Assets/img/stories/thumb/26.webp" width="401" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 26" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/27.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 27"><img src="Assets/img/stories/thumb/27.webp" width="444" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 27" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/28.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 28"><img src="Assets/img/stories/thumb/28.webp" width="436" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 28" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/29.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 29"><img src="Assets/img/stories/thumb/29.webp" width="399" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 29" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/stories/30.webp" data-cap="ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 30"><img src="Assets/img/stories/thumb/30.webp" width="383" height="560" alt="ദീപു കാട്ടൂർ — ആനുകാലികത്തിൽ പ്രസിദ്ധീകരിച്ച കഥ 30" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a></div><button type="button" class="btn btn--ghost more">എല്ലാം കാണുക <span class="num">(30)</span></button></div><div class="panel" id="panel-news" role="tabpanel" aria-labelledby="tab-news" hidden><div class="grid"><a class="tile" href="Assets/img/news/01.webp" data-cap="പത്ര വാർത്ത 1"><img src="Assets/img/news/thumb/01.webp" width="521" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 1" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/news/02.webp" data-cap="പത്ര വാർത്ത 2"><img src="Assets/img/news/thumb/02.webp" width="322" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 2" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/news/03.webp" data-cap="പത്ര വാർത്ത 3"><img src="Assets/img/news/thumb/03.webp" width="392" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 3" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/news/04.webp" data-cap="പത്ര വാർത്ത 4"><img src="Assets/img/news/thumb/04.webp" width="178" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 4" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/news/05.webp" data-cap="പത്ര വാർത്ത 5"><img src="Assets/img/news/thumb/05.webp" width="560" height="277" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 5" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/news/06.webp" data-cap="പത്ര വാർത്ത 6"><img src="Assets/img/news/thumb/06.webp" width="411" height="555" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 6" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/07.webp" data-cap="പത്ര വാർത്ത 7"><img src="Assets/img/news/thumb/07.webp" width="560" height="492" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 7" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/08.webp" data-cap="പത്ര വാർത്ത 8"><img src="Assets/img/news/thumb/08.webp" width="304" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 8" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/09.webp" data-cap="പത്ര വാർത്ത 9"><img src="Assets/img/news/thumb/09.webp" width="560" height="398" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 9" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/10.webp" data-cap="പത്ര വാർത്ത 10"><img src="Assets/img/news/thumb/10.webp" width="560" height="246" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 10" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/11.webp" data-cap="പത്ര വാർത്ത 11"><img src="Assets/img/news/thumb/11.webp" width="231" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 11" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/12.webp" data-cap="പത്ര വാർത്ത 12"><img src="Assets/img/news/thumb/12.webp" width="322" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 12" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/13.webp" data-cap="പത്ര വാർത്ത 13"><img src="Assets/img/news/thumb/13.webp" width="411" height="560" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 13" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/14.webp" data-cap="പത്ര വാർത്ത 14"><img src="Assets/img/news/thumb/14.webp" width="536" height="506" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 14" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/news/15.webp" data-cap="പത്ര വാർത്ത 15"><img src="Assets/img/news/thumb/15.webp" width="560" height="248" alt="ദീപു കാട്ടൂർ — പത്ര വാർത്ത 15" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a></div><button type="button" class="btn btn--ghost more">എല്ലാം കാണുക <span class="num">(15)</span></button></div><div class="panel" id="panel-functions" role="tabpanel" aria-labelledby="tab-functions" hidden><div class="grid"><a class="tile" href="Assets/img/functions/01.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 1"><img src="Assets/img/functions/thumb/01.webp" width="560" height="304" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 1" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/functions/02.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 2"><img src="Assets/img/functions/thumb/02.webp" width="560" height="280" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 2" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/functions/03.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 3"><img src="Assets/img/functions/thumb/03.webp" width="560" height="420" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 3" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/functions/04.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 4"><img src="Assets/img/functions/thumb/04.webp" width="499" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 4" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/functions/05.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 5"><img src="Assets/img/functions/thumb/05.webp" width="560" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 5" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/functions/06.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 6"><img src="Assets/img/functions/thumb/06.webp" width="560" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 6" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/07.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 7"><img src="Assets/img/functions/thumb/07.webp" width="560" height="313" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 7" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/08.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 8"><img src="Assets/img/functions/thumb/08.webp" width="560" height="422" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 8" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/09.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 9"><img src="Assets/img/functions/thumb/09.webp" width="560" height="462" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 9" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/10.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 10"><img src="Assets/img/functions/thumb/10.webp" width="560" height="420" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 10" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/11.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 11"><img src="Assets/img/functions/thumb/11.webp" width="560" height="252" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 11" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/12.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 12"><img src="Assets/img/functions/thumb/12.webp" width="560" height="315" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 12" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/13.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 13"><img src="Assets/img/functions/thumb/13.webp" width="560" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 13" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/14.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 14"><img src="Assets/img/functions/thumb/14.webp" width="315" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 14" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/15.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 15"><img src="Assets/img/functions/thumb/15.webp" width="395" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 15" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/16.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 16"><img src="Assets/img/functions/thumb/16.webp" width="354" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 16" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/17.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 17"><img src="Assets/img/functions/thumb/17.webp" width="560" height="280" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 17" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/18.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 18"><img src="Assets/img/functions/thumb/18.webp" width="396" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 18" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/19.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 19"><img src="Assets/img/functions/thumb/19.webp" width="307" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 19" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/20.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 20"><img src="Assets/img/functions/thumb/20.webp" width="398" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 20" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/21.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 21"><img src="Assets/img/functions/thumb/21.webp" width="560" height="467" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 21" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/22.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 22"><img src="Assets/img/functions/thumb/22.webp" width="424" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 22" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/23.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 23"><img src="Assets/img/functions/thumb/23.webp" width="396" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 23" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/functions/24.webp" data-cap="സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 24"><img src="Assets/img/functions/thumb/24.webp" width="426" height="560" alt="ദീപു കാട്ടൂർ — സാഹിത്യ സാംസ്കാരിക ചടങ്ങ് 24" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a></div><button type="button" class="btn btn--ghost more">എല്ലാം കാണുക <span class="num">(24)</span></button></div><div class="panel" id="panel-photos" role="tabpanel" aria-labelledby="tab-photos" hidden><div class="grid"><a class="tile" href="Assets/img/photos/01.webp" data-cap="ദീപു കാട്ടൂർ 1"><img src="Assets/img/photos/thumb/01.webp" width="558" height="560" alt="ദീപു കാട്ടൂർ 1 1" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/photos/02.webp" data-cap="ദീപു കാട്ടൂർ 2"><img src="Assets/img/photos/thumb/02.webp" width="560" height="547" alt="ദീപു കാട്ടൂർ 2 2" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/photos/03.webp" data-cap="ദീപു കാട്ടൂർ 3"><img src="Assets/img/photos/thumb/03.webp" width="560" height="560" alt="ദീപു കാട്ടൂർ 3 3" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/photos/04.webp" data-cap="ദീപു കാട്ടൂർ 4"><img src="Assets/img/photos/thumb/04.webp" width="504" height="505" alt="ദീപു കാട്ടൂർ 4 4" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/photos/05.webp" data-cap="ദീപു കാട്ടൂർ 5"><img src="Assets/img/photos/thumb/05.webp" width="522" height="525" alt="ദീപു കാട്ടൂർ 5 5" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile" href="Assets/img/photos/06.webp" data-cap="ദീപു കാട്ടൂർ 6"><img src="Assets/img/photos/thumb/06.webp" width="560" height="560" alt="ദീപു കാട്ടൂർ 6 6" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/photos/07.webp" data-cap="ദീപു കാട്ടൂർ 7"><img src="Assets/img/photos/thumb/07.webp" width="420" height="560" alt="ദീപു കാട്ടൂർ 7 7" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a><a class="tile is-extra" href="Assets/img/photos/08.webp" data-cap="ദീപു കാട്ടൂർ 8"><img src="Assets/img/photos/thumb/08.webp" width="560" height="424" alt="ദീപു കാട്ടൂർ 8 8" loading="lazy" decoding="async"><span class="zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></a></div><button type="button" class="btn btn--ghost more">എല്ലാം കാണുക <span class="num">(8)</span></button></div></div>
 </section>
     </div>

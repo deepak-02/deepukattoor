@@ -151,12 +151,6 @@ ul, ol, dl { margin: 0; padding: 0; }
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 4'%3E%3Cpath d='M0 2 Q3 0 6 2 T12 2 T18 2 T24 2' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x left center / 12px 4px;
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 4'%3E%3Cpath d='M0 2 Q3 0 6 2 T12 2 T18 2 T24 2' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x left center / 12px 4px;
 }
-@media (hover: hover) and (min-width: 900px) and (prefers-reduced-motion: no-preference) {
-  .nav a.is-active:hover::after {
-    animation: waveSlide 1.6s linear infinite;
-  }
-}
-@keyframes waveSlide { to { -webkit-mask-position: 12px center; mask-position: 12px center; } }
 
 .tools { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 @media (min-width: 900px) { .nav + .tools { margin-left: 8px; } }
@@ -579,8 +573,8 @@ div.channel--wide { align-items: flex-start; }
 .band__row + .band__row { margin-top: 12px; }
 .band__row span { font-family: var(--font-display); font-size: clamp(26px, 4.4vw, 52px); line-height: 1.3; color: var(--text); display: inline-flex; align-items: center; gap: 40px; }
 .band__row span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--sky); flex: none; }
-.band__row--alt span { color: transparent; -webkit-text-stroke: 1px var(--line-strong); }
-:root[data-theme="dark"] .band__row--alt span { -webkit-text-stroke-color: rgba(150,195,255,0.4); }
+.band__row--alt span { color: transparent; -webkit-text-stroke: 1.2px #547cb0; }
+:root[data-theme="dark"] .band__row--alt span { -webkit-text-stroke: 1.2px rgba(150,195,255,0.6); }
 /* Timeline fills as you scroll */
 .timeline::after { content: ""; position: absolute; left: 6px; top: 8px; width: 2px; height: calc(100% - 16px);
   background: linear-gradient(var(--accent), var(--sky)); transform-origin: top; transform: scaleY(var(--tp, 0)); border-radius: 2px; }
