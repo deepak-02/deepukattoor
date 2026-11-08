@@ -127,6 +127,7 @@ C = {
   "buy_on": "{}-ൽ വാങ്ങുക",
   "no_embed": "ഈ വീഡിയോ ഇവിടെ പ്ലേ ചെയ്യാൻ ഉടമ അനുവദിച്ചിട്ടില്ല. യൂട്യൂബിൽ കാണാം.",
   "gallery_title": "ഗാലറി",
+  "gallery_swipe": "വലത്തോട്ട് നീക്കുക →",
   "more": "എല്ലാം കാണുക",
   "folders": {
     "books": "പുസ്തകങ്ങൾ", "films": "ഹ്രസ്വചിത്രങ്ങൾ", "stories": "കഥകൾ",
@@ -228,6 +229,7 @@ C = {
   "buy_on": "Buy on {}",
   "no_embed": "The owner doesn't allow this video to play on other sites. You can watch it on YouTube.",
   "gallery_title": "Gallery",
+  "gallery_swipe": "Swipe to explore →",
   "more": "Show all",
   "folders": {
     "books": "Books", "films": "Short films", "stories": "Stories",
@@ -292,24 +294,35 @@ def gallery_html(t, P):
     for slug in FOLDER_ORDER:
         label = t["folders"][slug]
         if slug == "videos":
-            cover = f'<span class="folder__cover folder__cover--video"><img src="https://i.ytimg.com/vi/{VIDEOS[0][0]}/mqdefault.jpg" width="40" height="40" alt="" loading="lazy" decoding="async"><span class="folder__play">{icon("play", "icon--fill")}</span></span>'
-            count = f'<small class="num">{len(VIDEOS)}</small>'
+            count_num = len(VIDEOS)
+            cover = (f'<span class="folder__cover folder__cover--video">'
+                     f'<img src="https://i.ytimg.com/vi/{VIDEOS[0][0]}/mqdefault.jpg" width="120" height="74" alt="" loading="lazy" decoding="async">'
+                     f'<span class="folder__play">{icon("play", "icon--fill")}</span>'
+                     f'<small class="folder__count num">{count_num}</small></span>')
         else:
             items = GALLERY[slug]
-            n0 = items[0][0]
-            cover = f'<span class="folder__cover"><img src="{P}Assets/img/{slug}/thumb/cover.webp" width="40" height="40" alt="" loading="lazy" decoding="async"></span>'
-            count = f'<small class="num">{len(items)}</small>'
+            count_num = len(items)
+            cover = (f'<span class="folder__cover">'
+                     f'<img src="{P}Assets/img/{slug}/thumb/cover.webp" width="120" height="74" alt="" loading="lazy" decoding="async">'
+                     f'<small class="folder__count num">{count_num}</small></span>')
         sel = "true" if slug == "books" else "false"
-        tabs.append(f'<button type="button" class="folder" role="tab" id="tab-{slug}" aria-controls="panel-{slug}" aria-selected="{sel}" tabindex="{0 if slug=="books" else -1}">{cover}<span>{e(label)}{count}</span></button>')
+        tabs.append(
+            f'<button type="button" class="folder" role="tab" id="tab-{slug}" '
+            f'aria-controls="panel-{slug}" aria-selected="{sel}" tabindex="{0 if slug=="books" else -1}">'
+            f'{cover}<span class="folder__label">{e(label)}</span></button>'
+        )
         if slug == "videos":
             li = lang_of(t)
             vt = []
             for i, (vid, ml, en) in enumerate(VIDEOS):
                 title = ml if li == "ml" else en
                 extra = " is-extra" if i >= 6 else ""
-                vt.append(f'<a class="tile video-tile{extra}" href="https://youtu.be/{vid}" data-yt="{vid}" data-cap="{e(title)}">'
-                          f'<img src="https://i.ytimg.com/vi/{vid}/mqdefault.jpg" width="320" height="180" alt="{e(title)}" loading="lazy" decoding="async">'
-                          f'<span class="idx">{i+1}</span><span class="play"><span>{icon("play", "icon--fill")}</span></span><figcaption>{e(title)}</figcaption></a>')
+                vt.append(
+                    f'<a class="tile video-tile{extra}" href="https://youtu.be/{vid}" data-yt="{vid}" data-cap="{e(title)}">'
+                    f'<img src="https://i.ytimg.com/vi/{vid}/mqdefault.jpg" width="320" height="180" alt="{e(title)}" loading="lazy" decoding="async">'
+                    f'<span class="idx">{i+1}</span><span class="play"><span>{icon("play", "icon--fill")}</span></span>'
+                    f'<figcaption>{e(title)}</figcaption></a>'
+                )
             more = f'<button type="button" class="btn btn--ghost more">{e(t["more"])} <span class="num">({len(vt)})</span></button>' if len(vt) > 6 else ""
             panels.append(f'<div class="panel" id="panel-videos" role="tabpanel" aria-labelledby="tab-videos" hidden><div class="grid grid--video">{"".join(vt)}</div>{more}</div>')
             continue
@@ -321,14 +334,19 @@ def gallery_html(t, P):
             extra = " is-extra" if i >= 6 else ""
             tiles.append(
                 f'<a class="tile{extra}" href="{P}Assets/img/{slug}/{n}" data-cap="{e(cap)}">'
-                f'<img src="{P}Assets/img/{slug}/thumb/{n}" width="{tw}" height="{th}" alt="{e(alt)}" loading="lazy" decoding="async"><span class="zoom">{icon("zoom")}</span></a>')
+                f'<img src="{P}Assets/img/{slug}/thumb/{n}" width="{tw}" height="{th}" alt="{e(alt)}" loading="lazy" decoding="async">'
+                f'<span class="zoom">{icon("zoom")}</span></a>'
+            )
         more = f'<button type="button" class="btn btn--ghost more">{e(t["more"])} <span class="num">({len(tiles)})</span></button>' if len(tiles) > 6 else ""
         hidden = "" if slug == "books" else " hidden"
         panels.append(f'<div class="panel" id="panel-{slug}" role="tabpanel" aria-labelledby="tab-{slug}"{hidden}><div class="grid">{"".join(tiles)}</div>{more}</div>')
     first = len(GALLERY["books"])
     return f'''
 <section class="gallery reveal reveal--scale" id="gallery" aria-labelledby="gallery-title">
-  <div class="gallery__head"><h2 id="gallery-title">{e(t["gallery_title"])}</h2><span class="gallery__count num">{first}</span></div>
+  <div class="gallery__head">
+    <h2 id="gallery-title">{e(t["gallery_title"])}</h2>
+    <span class="gallery__count num" id="gallery-count">{first}</span>
+  </div>
   <div class="folders" role="tablist" aria-label="{e(t["gallery_title"])}">{"".join(tabs)}</div>
   <div class="gallery__scroll">{"".join(panels)}</div>
 </section>'''

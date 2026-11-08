@@ -266,7 +266,7 @@
 
   /* ---------- Gallery tabs ---------- */
   var tabs = $$(".folder");
-  var countEl = $(".gallery__count");
+  var countEl = $("#gallery-count") || $(".gallery__count");
   function selectTab(tab, focus) {
     tabs.forEach(function (t) {
       var on = t === tab;
